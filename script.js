@@ -1,6 +1,16 @@
 
+class Node {
+    constructor(key, value){
+        this.key = key;
+        this.value = value;
+        this.next = null
+    }
+}
+
 class hashMap {
-    constructor(){
+    constructor(node){
+        this.node = null
+        this.bucket = []
 
     }
 
@@ -15,13 +25,42 @@ class hashMap {
     }
 
     set(key, value){
-        let keyValue = new Map();
-        keyValue.set(key, value);
-        return keyValue.get(key);
+
+        let arr = this.bucket;
+        let node = this.node
+
+        if(arr.length === 0){
+            node = new Node(key, value)
+            arr.push(node)
+            return arr
+        }
+
+        for(let i = 0; i < arr.length; i++){
+            console.log(arr[i].key)
+            if(arr[i].key === key){
+                arr[i].value = value
+                return arr
+            } else {
+                node = new Node(key, value);
+                arr.push(node);
+                return arr
+                }
+        }
     }
 
 }
 
 let hash1 = new hashMap()
 console.log(hash1.hash("house"))
-console.log(hash1.set("eat","apples"))
+
+console.log(hash1.set("eat", "apples"))
+
+console.log(hash1.set("drink", "beer"))
+
+console.log(hash1.set("eat", "pears"))
+
+
+
+
+
+
