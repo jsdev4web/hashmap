@@ -17,7 +17,7 @@ class hashMap {
     set(key, value){
         let keyValue = new Map();
         keyValue.set(key, value);
-        return keyValue.get("key");
+        return keyValue.get(key);
     }
 
 }
