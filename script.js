@@ -36,9 +36,9 @@ class hashMap {
         }
 
         for(let i = 0; i < arr.length; i++){
-            console.log(arr[i].key)
+            //console.log(arr[i].key)
             if(arr[i].key === key){
-                arr[i].value = value
+                arr[i].next = new Node(key, value)
                 return arr
             } else {
                 node = new Node(key, value);
@@ -46,6 +46,46 @@ class hashMap {
                 return arr
                 }
         }
+    }
+
+    get(key){
+        let arr = this.bucket;
+        console.log(key, " : for get(key)")
+    
+        for (let i = 0; i < arr.length; i++){
+                
+            if(arr[i].key === key ){
+    
+                return key
+            } 
+        }
+        return null
+    }
+
+    has(key){
+        let arr = this.bucket;
+
+        for (let i = 0; i < arr.length; i++){
+            if(arr[i].key === key){
+                return true
+            } 
+        } 
+        return null
+    }
+
+    remove(key){
+        let arr = this.bucket
+
+        for (let i = 0; i < arr.length; i++){
+            if(arr[i].key === key){
+                console.log()
+                arr.splice(i, i + 1)
+                console.log(arr)
+                return true
+            }
+        }
+        
+        return false
     }
 
 }
@@ -58,6 +98,14 @@ console.log(hash1.set("eat", "apples"))
 console.log(hash1.set("drink", "beer"))
 
 console.log(hash1.set("eat", "pears"))
+
+console.log(hash1.get("loop"))
+
+console.log(hash1.has("beet"))
+
+console.log(hash1.remove("looms"))
+
+
 
 
 
